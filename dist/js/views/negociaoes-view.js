@@ -11,7 +11,9 @@ export class NegociacoesView extends View {
                 </tr>
             </thead>
             <tbody>
-                ${model.lista().map(negociacao => {
+                ${model
+            .lista()
+            .map((negociacao) => {
             return `
                         <tr>
                             <td>?</td>
@@ -19,12 +21,10 @@ export class NegociacoesView extends View {
                             <td>${negociacao.valor}</td>
                         </tr>
                     `;
-        }).join('')}
+        })
+            .join("")}
             </tbody>
         </table>
         `;
-    }
-    update(model) {
-        this.elemento.innerHTML = this.template(model);
     }
 }

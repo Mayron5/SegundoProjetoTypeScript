@@ -1,10 +1,9 @@
 import { Negociacoes } from "../models/negociacoes.js";
 import { View } from "./view.js";
 
-export class NegociacoesView extends View {
-
-    template(model: Negociacoes) : string {
-        return `
+export class NegociacoesView extends View<Negociacoes> {
+  protected template(model: Negociacoes): string {
+    return `
         <table class="table table-over table-bordered">
             <thead>
                 <tr>
@@ -14,7 +13,9 @@ export class NegociacoesView extends View {
                 </tr>
             </thead>
             <tbody>
-                ${model.lista().map(negociacao =>{
+                ${model
+                  .lista()
+                  .map((negociacao) => {
                     return `
                         <tr>
                             <td>?</td>
@@ -22,12 +23,10 @@ export class NegociacoesView extends View {
                             <td>${negociacao.valor}</td>
                         </tr>
                     `;
-                }).join('')}
+                  })
+                  .join("")}
             </tbody>
         </table>
         `;
-    }
-    update(model : Negociacoes) : void {
-        this.elemento.innerHTML = this.template(model);
-    }
+  }
 }
